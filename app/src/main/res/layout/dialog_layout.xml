@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/bg_dialog"
+    tools:context=".MainActivity"
+    >
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Bạn muốn?"
+        android:textColor="@color/black"
+        android:textSize="30sp"
+
+        />
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:orientation="horizontal"
+           android:gravity="center"
+           android:layout_margin="20dp"
+           >
+
+           <RelativeLayout
+               android:id="@+id/practice"
+               android:layout_width="100dp"
+               android:layout_height="100dp"
+               android:layout_gravity="center"
+               android:layout_marginRight="25dp"
+               android:background="@drawable/bg_option"
+               android:gravity="center"
+               android:clickable="true"
+               android:focusable="true"
+               android:onClick="onClick"
+               >
+
+               <ImageView
+                   android:layout_width="50dp"
+                   android:layout_height="70dp"
+                   android:layout_alignParentStart="true"
+                   android:layout_alignParentTop="true"
+                   android:layout_alignParentEnd="true"
+                   android:layout_gravity="center"
+                   android:layout_marginStart="25dp"
+                   android:layout_marginEnd="25dp"
+                   android:src="@drawable/pencil" />
+
+               <TextView
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_alignParentStart="true"
+                   android:layout_alignParentEnd="true"
+                   android:layout_alignParentBottom="true"
+                   android:layout_gravity="center"
+                   android:layout_marginStart="5dp"
+                   android:layout_marginEnd="3dp"
+                   android:layout_marginBottom="6dp"
+                   android:text="Luyện tập"
+                   android:gravity="center"
+                   android:textColor="@color/black"
+                   android:textSize="20sp" />
+           </RelativeLayout>
+
+           <RelativeLayout
+               android:id="@+id/exam"
+               android:layout_width="100dp"
+               android:layout_height="100dp"
+               android:background="@drawable/bg_option"
+               android:layout_gravity="center"
+               android:gravity="center"
+               android:layout_marginLeft="25dp"
+               android:clickable="true"
+               android:focusable="true"
+               android:onClick="onClick">
+
+               <ImageView
+                   android:layout_width="wrap_content"
+                   android:layout_height="75dp"
+                   android:layout_alignParentStart="true"
+                   android:layout_alignParentEnd="true"
+                   android:layout_alignParentBottom="true"
+                   android:layout_gravity="center"
+                   android:layout_marginStart="26dp"
+                   android:layout_marginEnd="23dp"
+                   android:layout_marginBottom="39dp"
+                   android:src="@drawable/choose" />
+
+               <TextView
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_alignParentStart="true"
+                   android:layout_alignParentEnd="true"
+                   android:layout_alignParentBottom="true"
+                   android:layout_gravity="center"
+                   android:layout_marginStart="5dp"
+                   android:layout_marginEnd="3dp"
+                   android:layout_marginBottom="6dp"
+                   android:gravity="center"
+                   android:text="Kiểm tra"
+                   android:textColor="@color/black"
+                   android:textSize="20sp" />
+           </RelativeLayout>
+       </LinearLayout>
+</LinearLayout>

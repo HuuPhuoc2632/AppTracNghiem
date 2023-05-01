@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- fragment_screen_slide_page.xml -->
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/content"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        tools:context=".ContestActivity"
+        android:background="@color/white">
+
+
+
+        <TextView
+            android:id="@+id/nameOfSubject"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Chủ Nghĩa Xã Hội Khoa Học"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:textColor="#FF5722"
+            android:gravity="center"
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp"
+            />
+        <RelativeLayout
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="15dp"
+            >
+
+            <TextView
+                android:id="@+id/questionContent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_question"
+                android:gravity="center"
+                android:layout_marginTop="30dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:text="@string/questiontest"
+                android:textColor="@color/white"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/numberQuestion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/bg_title_question"
+                android:gravity="center"
+                android:padding="8dp"
+                android:textColor="#0C26B6"
+                android:textSize="20sp" />
+
+
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/answer1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Answer 1"
+            android:textColor="@color/white"
+            android:background="@drawable/bg_normal_answer"
+            android:padding="10dp"
+            android:layout_margin="5dp"
+            android:gravity="center"
+            android:textSize="15dp"
+            />
+        <TextView
+            android:id="@+id/answer2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Answer 2"
+            android:textColor="@color/white"
+            android:background="@drawable/bg_normal_answer"
+            android:padding="10dp"
+            android:layout_margin="5dp"
+            android:gravity="center"
+            android:textSize="15dp"
+            />
+        <TextView
+            android:id="@+id/answer3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Answer 3"
+            android:textColor="@color/white"
+            android:background="@drawable/bg_normal_answer"
+            android:padding="10dp"
+            android:layout_margin="5dp"
+            android:gravity="center"
+            android:textSize="15dp"
+            />
+        <TextView
+            android:id="@+id/answer4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Answer 4"
+            android:textColor="@color/white"
+            android:background="@drawable/bg_normal_answer"
+            android:padding="10dp"
+            android:layout_margin="5dp"
+            android:gravity="center"
+            android:textSize="15dp"
+            />
+
+    </LinearLayout>
+
+</ScrollView>

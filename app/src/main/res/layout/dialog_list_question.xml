@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="330dp"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/bg_dialog_question"
+    android:padding="10dp"
+    android:gravity="center"
+    >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Bảng câu hỏi"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textSize="25sp"
+            android:fontFamily="@font/sigmar"
+            android:textColor="@color/purple_700"
+            />
+
+    </LinearLayout>
+    <GridView
+        android:id="@+id/gvListQuestionDialog"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:numColumns="4"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/btnClose"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="Đóng"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textColor="#FFD600"
+            android:background="@drawable/bg_button_submit"
+            />
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="MyTabs">
+        <item name="android:textColor">@color/white</item>
+<!--        <item name="android:background">@drawable/tabs</item>-->
+<!--        <item name="android:backgroundStacked">@color/red_action_bar</item>-->
+    </style>
+    <style name="TabWidgetTheme" >
+    <item name="android:textColorPrimary">@color/purple_500</item>
+    <item name="android:textColorSecondary">#E4D1FF</item>
+    <item name="colorAccent">@color/purple_500</item>
+</style>
+
+
+</resources>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="6dp"
+    >
+
+    <TextView
+        android:id="@+id/tvNumberQuestion"
+        android:layout_width="60dp"
+        android:layout_height="25dp"
+        android:text="Câu 1"
+        android:textSize="14sp"
+        android:textColor="@color/black"
+        android:padding="4dp"
+        android:background="@drawable/bg_item_gridview"
+        android:gravity="center"
+        android:fontFamily="@font/lobster"
+        tools:ignore="MissingConstraints" />
+</LinearLayout>

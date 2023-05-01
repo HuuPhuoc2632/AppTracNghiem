@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="300dp"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/bg_dialog_question"
+    >
+
+
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Kết quả"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:textSize="45sp"
+        android:fontFamily="@font/sigmar"
+        android:textColor="@color/purple_700"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+
+        <TextView
+            android:id="@+id/tvSumCorrect"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="21/30"
+            android:textColor="@color/black"
+            android:textSize="30sp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:padding="7dp"
+            android:fontFamily="@font/lobster"
+            />
+
+        <TextView
+            android:id="@+id/tvResult"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="7 điểm!!"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textSize="40dp"
+            android:textColor="#D50000"
+            android:fontFamily="@font/lobster"
+            android:textStyle="italic"
+
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center"
+        android:gravity="center"
+        >
+        <Button
+            android:id="@+id/btnReview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Xem lại"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:background="@drawable/bg_button_submit"
+            android:textColor="#FFD600"
+            android:layout_margin="20dp"
+            />
+        <Button
+            android:id="@+id/btnClose"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Đóng"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:background="@drawable/bg_button_submit"
+            android:textColor="#FFD600"
+            android:layout_margin="20dp"
+            />
+
+    </LinearLayout>
+</LinearLayout>
