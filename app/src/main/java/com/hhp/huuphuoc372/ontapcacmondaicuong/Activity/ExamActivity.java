@@ -1,6 +1,5 @@
-package com.hhp.huuphuoc372.ontapcacmondaicuong;
+package com.hhp.huuphuoc372.ontapcacmondaicuong.Activity;
 
-import androidx.activity.OnBackPressedCallback;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
@@ -12,24 +11,24 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.CountDownTimer;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.GridView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.hhp.huuphuoc372.ontapcacmondaicuong.R;
 import com.hhp.huuphuoc372.ontapcacmondaicuong.adapter.ItemGridViewAdapter;
+import com.hhp.huuphuoc372.ontapcacmondaicuong.adapter.ResultGridviewApdater;
 import com.hhp.huuphuoc372.ontapcacmondaicuong.dao.DBHelper;
-import com.hhp.huuphuoc372.ontapcacmondaicuong.dao.Database;
 import com.hhp.huuphuoc372.ontapcacmondaicuong.dao.QuestionDAO;
 import com.hhp.huuphuoc372.ontapcacmondaicuong.model.Question;
 import com.hhp.huuphuoc372.ontapcacmondaicuong.model.QuestionAnswered;
 
+import java.io.Serializable;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -37,12 +36,11 @@ import java.util.List;
 
 public class ExamActivity extends AppCompatActivity implements View.OnClickListener {
     private TextView tvcountDown, tvnameSubject, tvquestionContent, tvnumberQuestion, tvListQuestion, tvSumCorrect, tvResult;
-    private Button btnSubmit, btnNext, btnPre, btnClose, btnCloseResult;
+    private Button btnSubmit, btnNext, btnPre, btnClose, btnCloseResult, btnReview;
     private RadioGroup groupAnswer;
     private RadioButton rdbtnAnswer1, rdbtnAnswer2, rdbtnAnswer3, rdbtnAnswer4;
-    private GridView gvListQuestion;
+    private GridView gvListQuestion, gvListQuestionResult;
     private List<Question> questionList;
-    private Database db;
     private Context context;
     private int numQuestion = 0;
     private List<Question> listQuestionFull;
@@ -63,7 +61,7 @@ public class ExamActivity extends AppCompatActivity implements View.OnClickListe
         subject = intent.getStringExtra("name");
 
         listQuestionFull = getQuestion(getIdSubject(subject));
-        questionList = listQuestionFull.subList(0, 30);
+        questionList = listQuestionFull.subList(0, 40);
 
         Collections.shuffle(questionList);
         int i = 0;
@@ -80,10 +78,6 @@ public class ExamActivity extends AppCompatActivity implements View.OnClickListe
         btnPre.setOnClickListener(this);
         tvListQuestion.setOnClickListener(this);
         btnSubmit.setOnClickListener(this);
-
-        for (QuestionAnswered qa : qaList) {
-            System.out.println(qa);
-        }
 
     }
 
@@ -200,23 +194,6 @@ public class ExamActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
-    public void selectRadioButton(int pos) {
-        switch (pos) {
-            case 1:
-                rdbtnAnswer1.setSelected(true);
-                break;
-            case 2:
-                rdbtnAnswer2.setSelected(true);
-                break;
-            case 3:
-                rdbtnAnswer3.setSelected(true);
-                break;
-            case 4:
-                rdbtnAnswer4.setSelected(true);
-                break;
-        }
-    }
-
     private List<Question> getQuestion(String sub) {
         DBHelper dbHelper = new DBHelper(getApplicationContext());
         List<Question> qlist = new QuestionDAO(dbHelper).findQuestionBySubject(sub);
@@ -297,9 +274,6 @@ public class ExamActivity extends AppCompatActivity implements View.OnClickListe
             }
         }
         qaList.set(numCheck, qa);
-        for (QuestionAnswered qaz : qaList) {
-            System.out.println(qaz);
-        }
     }
 
 
@@ -397,8 +371,11 @@ public class ExamActivity extends AppCompatActivity implements View.OnClickListe
         tvSumCorrect = dialog.findViewById(R.id.tvSumCorrect);
         tvResult = dialog.findViewById(R.id.tvResult);
         btnCloseResult = dialog.findViewById(R.id.btnClose);
+        btnReview = dialog.findViewById(R.id.btnReview);
         tvSumCorrect.setText(checkSumAnswerCorrect() + "/" + "30");
-        System.out.println((float) 10 / (float) 30);
+        ResultGridviewApdater resultGridviewApdater = new ResultGridviewApdater(qaList, this);
+        gvListQuestionResult = dialog.findViewById(R.id.gvListQuestionResult);
+        gvListQuestionResult.setAdapter(resultGridviewApdater);
         float result = (float) checkSumAnswerCorrect() * ((float) 10 / (float) 30);
         DecimalFormat f = new DecimalFormat("##.00");
         tvResult.setText(f.format(result) + " Điểm!!");
@@ -408,6 +385,20 @@ public class ExamActivity extends AppCompatActivity implements View.OnClickListe
                 dialog.dismiss();
             }
         });
+        btnReview.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ExamActivity.this, ReviewExamActivity.class);
+                intent.putExtra("list", (Serializable) qaList);
+                intent.putExtra("name", subject);
+                intent.putExtra("category", -1);
+                startActivity(intent);
+                dialog.dismiss();
+                finish();
+
+            }
+        });
+
         dialog.show();
     }
 

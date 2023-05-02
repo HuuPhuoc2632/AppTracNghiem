@@ -54,6 +54,13 @@
 
     </LinearLayout>
 
+    <GridView
+        android:id="@+id/gvListQuestionResult"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:numColumns="4"
+        />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

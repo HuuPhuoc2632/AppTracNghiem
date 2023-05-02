@@ -4,6 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/HuuPhuoc/Desktop/Study/Android/OnTapCacMonDaiCuong/app/src/main/res/drawable-anydpi/ic_action_name.xml" value="0.1965" />
+        <entry key="..\:/Users/HuuPhuoc/Desktop/Study/Android/OnTapCacMonDaiCuong/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1515" />
         <entry key="..\:/Users/HuuPhuoc/Desktop/Study/Android/OnTapCacMonDaiCuong/app/src/main/res/drawable/bg_button_cancle.xml" value="0.142" />
         <entry key="..\:/Users/HuuPhuoc/Desktop/Study/Android/OnTapCacMonDaiCuong/app/src/main/res/drawable/bg_button_next.xml" value="0.1965" />
         <entry key="..\:/Users/HuuPhuoc/Desktop/Study/Android/OnTapCacMonDaiCuong/app/src/main/res/drawable/bg_button_submit.xml" value="0.206" />
@@ -13,6 +14,8 @@
         <entry key="..\:/Users/HuuPhuoc/Desktop/Study/Android/OnTapCacMonDaiCuong/app/src/main/res/drawable/bg_false_answer.xml" value="0.1965" />
         <entry key="..\:/Users/HuuPhuoc/Desktop/Study/Android/OnTapCacMonDaiCuong/app/src/main/res/drawable/bg_item_gridview.xml" value="0.1435" />
         <entry key="..\:/Users/HuuPhuoc/Desktop/Study/Android/OnTapCacMonDaiCuong/app/src/main/res/drawable/bg_item_gridview_checked.xml" value="0.1435" />
+        <entry key="..\:/Users/HuuPhuoc/Desktop/Study/Android/OnTapCacMonDaiCuong/app/src/main/res/drawable/bg_item_gridview_false.xml" value="0.102" />
+        <entry key="..\:/Users/HuuPhuoc/Desktop/Study/Android/OnTapCacMonDaiCuong/app/src/main/res/drawable/bg_item_gridview_true.xml" value="0.102" />
         <entry key="..\:/Users/HuuPhuoc/Desktop/Study/Android/OnTapCacMonDaiCuong/app/src/main/res/drawable/bg_line_subject.xml" value="0.185" />
         <entry key="..\:/Users/HuuPhuoc/Desktop/Study/Android/OnTapCacMonDaiCuong/app/src/main/res/drawable/bg_option.xml" value="0.1965" />
         <entry key="..\:/Users/HuuPhuoc/Desktop/Study/Android/OnTapCacMonDaiCuong/app/src/main/res/drawable/bg_question.xml" value="0.213" />
@@ -28,6 +31,8 @@
         <entry key="..\:/Users/HuuPhuoc/Desktop/Study/Android/OnTapCacMonDaiCuong/app/src/main/res/drawable/bs_answer.xml" value="0.213" />
         <entry key="..\:/Users/HuuPhuoc/Desktop/Study/Android/OnTapCacMonDaiCuong/app/src/main/res/drawable/card_foreground.xml" value="0.1955" />
         <entry key="..\:/Users/HuuPhuoc/Desktop/Study/Android/OnTapCacMonDaiCuong/app/src/main/res/drawable/custom_radio_button.xml" value="0.1935" />
+        <entry key="..\:/Users/HuuPhuoc/Desktop/Study/Android/OnTapCacMonDaiCuong/app/src/main/res/drawable/ic_baseline_radio_button_checked_24.xml" value="0.1515" />
+        <entry key="..\:/Users/HuuPhuoc/Desktop/Study/Android/OnTapCacMonDaiCuong/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1515" />
         <entry key="..\:/Users/HuuPhuoc/Desktop/Study/Android/OnTapCacMonDaiCuong/app/src/main/res/drawable/trac_nghiem_background.xml" value="0.1965" />
         <entry key="..\:/Users/HuuPhuoc/Desktop/Study/Android/OnTapCacMonDaiCuong/app/src/main/res/layout/activity_contest.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/HuuPhuoc/Desktop/Study/Android/OnTapCacMonDaiCuong/app/src/main/res/layout/activity_contest2.xml" value="0.25416666666666665" />
@@ -36,8 +41,9 @@
         <entry key="..\:/Users/HuuPhuoc/Desktop/Study/Android/OnTapCacMonDaiCuong/app/src/main/res/layout/activity_historyy_tab_main.xml" value="0.253125" />
         <entry key="..\:/Users/HuuPhuoc/Desktop/Study/Android/OnTapCacMonDaiCuong/app/src/main/res/layout/activity_main.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/HuuPhuoc/Desktop/Study/Android/OnTapCacMonDaiCuong/app/src/main/res/layout/activity_main2.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/HuuPhuoc/Desktop/Study/Android/OnTapCacMonDaiCuong/app/src/main/res/layout/activity_review_exam.xml" value="0.2" />
         <entry key="..\:/Users/HuuPhuoc/Desktop/Study/Android/OnTapCacMonDaiCuong/app/src/main/res/layout/activity_screen_slide_pager.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/HuuPhuoc/Desktop/Study/Android/OnTapCacMonDaiCuong/app/src/main/res/layout/dialog_layout.xml" value="0.5363214837712519" />
+        <entry key="..\:/Users/HuuPhuoc/Desktop/Study/Android/OnTapCacMonDaiCuong/app/src/main/res/layout/dialog_layout.xml" value="0.264" />
         <entry key="..\:/Users/HuuPhuoc/Desktop/Study/Android/OnTapCacMonDaiCuong/app/src/main/res/layout/dialog_list_question.xml" value="0.2" />
         <entry key="..\:/Users/HuuPhuoc/Desktop/Study/Android/OnTapCacMonDaiCuong/app/src/main/res/layout/dialog_result.xml" value="0.2" />
         <entry key="..\:/Users/HuuPhuoc/Desktop/Study/Android/OnTapCacMonDaiCuong/app/src/main/res/layout/fragment_screen_slide_page.xml" value="0.264" />

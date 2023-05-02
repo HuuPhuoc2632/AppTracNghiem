@@ -16,6 +16,7 @@ public class QuestionDAO {
         this.dbHelper = dbHelper;
     }
 
+
     public List<Question> findQuestionBySubject(String subject) {
         List<Question> QList = new ArrayList<>();
         SQLiteDatabase sqLiteDatabase = dbHelper.getReadableDatabase();

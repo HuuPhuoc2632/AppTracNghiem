@@ -29,14 +29,16 @@
             android:layout_marginBottom="5dp"
             android:layout_marginRight="15dp"
             android:background="@drawable/bg_subject_image"
+            android:gravity="center"
             >
 
             <ImageView
                 android:id="@+id/img_subject"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="70dp"
+                android:layout_height="100dp"
                 android:padding="5dp"
                 android:src="@drawable/cnxhkh"
+
                 />
 
         </LinearLayout>

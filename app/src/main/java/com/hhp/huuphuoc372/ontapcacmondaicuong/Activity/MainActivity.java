@@ -1,4 +1,4 @@
-package com.hhp.huuphuoc372.ontapcacmondaicuong;
+package com.hhp.huuphuoc372.ontapcacmondaicuong.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
@@ -10,7 +10,6 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.Gravity;
@@ -21,8 +20,8 @@ import android.widget.RelativeLayout;
 import android.widget.TabHost;
 import android.widget.TabWidget;
 import android.widget.TextView;
-import android.widget.Toast;
 
+import com.hhp.huuphuoc372.ontapcacmondaicuong.R;
 import com.hhp.huuphuoc372.ontapcacmondaicuong.dao.DBHelper;
 import com.hhp.huuphuoc372.ontapcacmondaicuong.model.Subject;
 import com.hhp.huuphuoc372.ontapcacmondaicuong.adapter.SubjectAdapter;

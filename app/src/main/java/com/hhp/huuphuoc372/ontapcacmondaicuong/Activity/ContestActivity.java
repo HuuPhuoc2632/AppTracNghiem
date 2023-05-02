@@ -1,4 +1,4 @@
-package com.hhp.huuphuoc372.ontapcacmondaicuong;
+package com.hhp.huuphuoc372.ontapcacmondaicuong.Activity;
 
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
@@ -7,15 +7,14 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.view.Gravity;
 import android.view.View;
-import android.view.Window;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.hhp.huuphuoc372.ontapcacmondaicuong.R;
 import com.hhp.huuphuoc372.ontapcacmondaicuong.dao.DBHelper;
 import com.hhp.huuphuoc372.ontapcacmondaicuong.dao.Database;
 import com.hhp.huuphuoc372.ontapcacmondaicuong.dao.QuestionDAO;

@@ -8,51 +8,50 @@
     android:background="@color/white"
     tools:context=".Activity.ExamActivity">
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="70dp"
+        android:layout_gravity="center"
         android:background="@color/purple_500"
-        >
-        <TextView
-            android:id="@+id/count_down"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:text="50:00"
-            android:textColor="@color/white"
-            android:layout_weight="1"
-            android:textSize="25sp"
-            android:fontFamily="@font/merriweather"
-            />
-
-        <TextView
-            android:id="@+id/tvListQuestion"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Câu 1"
-            android:textSize="25dp"
-            android:padding="5dp"
-            android:gravity="center"
-            android:textColor="@color/white"
-            android:fontFamily="@font/lobster"
-            android:background="@drawable/bg_question_item"
-            />
+        android:gravity="start"
+        android:orientation="horizontal">
 
         <Button
-            android:id="@+id/btnSubmit"
+            android:id="@+id/btnCloseResult"
             android:layout_width="wrap_content"
-            android:layout_height="70dp"
-            android:layout_marginTop="-5dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="16dp"
             android:background="@drawable/bg_button_submit"
-            android:gravity="center"
-            android:text="Nộp bài"
-            android:textColor="#FFEB3B"
-            android:textSize="17sp"
-            android:layout_weight="1"
             android:fontFamily="@font/sigmar"
-            />
-    </LinearLayout>
+            android:gravity="start"
+            android:paddingLeft="5dp"
+            android:text="Đóng"
+            android:textColor="#FFD600"
+            android:textSize="25dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvListQuestionResult"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@drawable/bg_question_item"
+            android:fontFamily="@font/lobster"
+            android:foregroundGravity="center"
+            android:gravity="center"
+            android:padding="5dp"
+            android:text="Câu 1"
+            android:textColor="@color/white"
+            android:textSize="25sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -60,7 +59,7 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/nameOfSubject"
+            android:id="@+id/nameOfSubjectResult"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
@@ -83,7 +82,7 @@
         android:paddingRight="15dp">
 
         <TextView
-            android:id="@+id/questionContent"
+            android:id="@+id/questionContentResult"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
@@ -99,10 +98,15 @@
             android:textSize="20sp" />
 
         <TextView
-            android:id="@+id/numberQuestion"
+            android:id="@+id/numberQuestionResult"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="120dp"
+            android:layout_marginTop="-2dp"
+            android:layout_marginEnd="120dp"
             android:background="@drawable/bg_title_question"
             android:fontFamily="@font/banger"
             android:gravity="center"
@@ -116,12 +120,12 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
         <RadioGroup
-            android:id="@+id/groupAnswer"
+            android:id="@+id/groupAnswerResult"
             android:layout_width="match_parent"
             android:layout_height="match_parent" >
 
             <RadioButton
-                android:id="@+id/rdbtnAnswer1"
+                android:id="@+id/rdbtnAnswer1Result"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Dev test đáp án câu dài cỡ này nè mấy ba mấy má"
@@ -133,7 +137,7 @@
                 />
 
             <RadioButton
-                android:id="@+id/rdbtnAnswer2"
+                android:id="@+id/rdbtnAnswer2Result"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Dev test đáp án câu dài cỡ này nè mấy ba mấy má"
@@ -144,7 +148,7 @@
                 android:button="@drawable/custom_radio_button"/>
 
             <RadioButton
-                android:id="@+id/rdbtnAnswer3"
+                android:id="@+id/rdbtnAnswer3Result"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Dev test đáp án câu dài cỡ này nè mấy ba mấy má"
@@ -155,7 +159,7 @@
                 android:button="@drawable/custom_radio_button"/>
 
             <RadioButton
-                android:id="@+id/rdbtnAnswer4"
+                android:id="@+id/rdbtnAnswer4Result"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Dev test đáp án câu dài cỡ này nè mấy ba mấy má"
@@ -172,7 +176,7 @@
         android:layout_height="match_parent">
 
         <Button
-            android:id="@+id/btnNext"
+            android:id="@+id/btnNextResult"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="24dp"
@@ -184,9 +188,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.162" />
-
         <Button
-            android:id="@+id/btnPre"
+            android:id="@+id/btnPreResult"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"

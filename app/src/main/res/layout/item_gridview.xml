@@ -5,7 +5,6 @@
     android:layout_height="match_parent"
     android:padding="6dp"
     >
-
     <TextView
         android:id="@+id/tvNumberQuestion"
         android:layout_width="60dp"

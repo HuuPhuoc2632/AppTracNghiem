@@ -1,6 +1,8 @@
 package com.hhp.huuphuoc372.ontapcacmondaicuong.model;
 
-public class QuestionAnswered {
+import java.io.Serializable;
+
+public class QuestionAnswered implements Serializable {
     private int numberQuestion;
     private int idQuestion;
     private int answerOfQuestion;

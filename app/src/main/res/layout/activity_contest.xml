@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    tools:context=".ContestActivity"
+    tools:context=".Activity.ContestActivity"
     android:background="@color/white"
     >
 
