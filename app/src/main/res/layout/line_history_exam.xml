@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="100dp"
+    android:orientation="horizontal"
+    android:padding="10dp"
+    android:layout_margin="10dp"
+    android:layout_marginBottom="30dp"
+    android:background="@drawable/bg_line_history"
+    >
+
+    <TextView
+        android:id="@+id/tvScore"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="3"
+        android:text="9.00"
+        android:textSize="30sp"
+        android:fontFamily="@font/sigmar"
+        android:textColor="#D50000"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:background="@drawable/bg_subject_image"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:layout_marginLeft="7dp"
+        android:weightSum="2"
+        >
+
+        <TextView
+            android:id="@+id/tvNameSubject"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Chủ nghĩa Xã hội Khoa học"
+            android:fontFamily="@font/lobster"
+            android:textColor="@color/purple_700"
+            android:textSize="20sp"
+            android:layout_weight="1"
+            />
+
+        <TextView
+            android:id="@+id/tvDateOfExam"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="30/04/2023"
+            android:textSize="20sp"
+            android:textColor="#808080"
+            android:textStyle="italic"
+            android:layout_weight="1"
+            />
+    </LinearLayout>
+</LinearLayout>

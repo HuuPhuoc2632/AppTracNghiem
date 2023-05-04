@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     tools:context=".Activity.MainActivity"
     android:background="@color/white"
     >
@@ -26,7 +26,7 @@
         android:layout_width="match_parent"
         android:layout_height="575dp"
         android:layout_marginTop="10dp"
-        android:paddingTop="20dp"
+        android:paddingTop="10dp"
         app:layout_constraintBottom_toBottomOf="@+id/titleText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"

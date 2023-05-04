@@ -2,14 +2,28 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/white"
     android:orientation="vertical"
-    >
+    tools:context=".Activity.HistoryActivity">
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="Bài kiểm tra đã làm"
+        android:textColor="#FFD600"
+        android:textSize="25sp"
+        android:gravity="center"
+        android:fontFamily="@font/sigmar"
+        />
+
+    <ListView
+        android:id="@+id/lvHistoryExam"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="HISTORY"
-        android:textSize="50dp"
+        android:layout_margin="10dp"
+        android:divider="@null"
+        android:dividerHeight="15dp"
         />
 </LinearLayout>

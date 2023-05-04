@@ -16,17 +16,27 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
+import android.widget.Button;
+import android.widget.GridView;
+import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TabHost;
 import android.widget.TabWidget;
 import android.widget.TextView;
 
 import com.hhp.huuphuoc372.ontapcacmondaicuong.R;
+import com.hhp.huuphuoc372.ontapcacmondaicuong.adapter.ResultGridviewApdater;
+import com.hhp.huuphuoc372.ontapcacmondaicuong.adapter.itemListViewAdapter;
 import com.hhp.huuphuoc372.ontapcacmondaicuong.dao.DBHelper;
+import com.hhp.huuphuoc372.ontapcacmondaicuong.model.Exam;
+import com.hhp.huuphuoc372.ontapcacmondaicuong.model.QuestionAnswered;
 import com.hhp.huuphuoc372.ontapcacmondaicuong.model.Subject;
 import com.hhp.huuphuoc372.ontapcacmondaicuong.adapter.SubjectAdapter;
 
 import java.io.IOException;
+import java.io.Serializable;
+import java.sql.Date;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -42,6 +52,12 @@ public class MainActivity extends AppCompatActivity implements  SubjectAdapter.S
     private Intent intentEx;
     private TabHost mainTab;
     private Typeface mTypeface;
+    private ListView lvHistory;
+    private List<QuestionAnswered> qaList = new ArrayList<>();
+    private List<Exam> examList = new ArrayList<>();
+    private GridView gvListQuestionResult;
+    private Button btnCloseResult;
+    private Button btnReview;
 
 
     @Override
@@ -56,8 +72,28 @@ public class MainActivity extends AppCompatActivity implements  SubjectAdapter.S
         layoutExam = (RelativeLayout) view.findViewById(R.id.exam);
         GridLayoutManager manager = new GridLayoutManager(this, 1);
         recyclerView.setLayoutManager(manager);
+
         recyclerView.setAdapter(subjectAdapter);
         subjectAdapter.setSubjectItemListener(this);
+        lvHistory = findViewById(R.id.lvHistoryExam);
+
+        Exam ex = new Exam(1, "Chủ nghĩa Xã hội Khoa học", qaList, "30/04/2023");
+        examList.add(ex);
+        examList.add(ex);
+        examList.add(ex);
+        examList.add(ex);
+        examList.add(ex);
+        examList.add(ex);
+        examList.add(ex);
+        examList.add(ex);
+        examList.add(ex);
+        examList.add(ex);
+
+
+
+        itemListViewAdapter itemListViewAdapter = new itemListViewAdapter(examList, this);
+        lvHistory.setAdapter(itemListViewAdapter);
+        System.out.println(lvHistory.getId());
         DBHelper dbHelper = new DBHelper(getApplicationContext());
         try {
             dbHelper.createDataBase();
@@ -69,6 +105,7 @@ public class MainActivity extends AppCompatActivity implements  SubjectAdapter.S
         layoutExam.setOnClickListener(this);
 
     }
+
 
     @SuppressLint("UseCompatLoadingForDrawables")
     private void mappingTab() {
@@ -151,6 +188,36 @@ public class MainActivity extends AppCompatActivity implements  SubjectAdapter.S
 
     public Context getContext() {
         return this;
+    }
+    private void showDialogResult() {
+        Dialog dialog = new Dialog(this);
+        dialog.setContentView(R.layout.dialog_review_exam);
+        ResultGridviewApdater resultGridviewApdater = new ResultGridviewApdater(qaList, this);
+        gvListQuestionResult = dialog.findViewById(R.id.gvListQuestionDialogHistory);
+        btnCloseResult = dialog.findViewById(R.id.btnCloseDialogHistory);
+        btnReview = dialog.findViewById(R.id.btnReviewExam);
+        gvListQuestionResult.setAdapter(resultGridviewApdater);
+        btnCloseResult.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+        btnReview.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, ReviewExamActivity.class);
+                intent.putExtra("list", "");
+                intent.putExtra("name", "");
+                intent.putExtra("category", -1);
+                startActivity(intent);
+                dialog.dismiss();
+                finish();
+
+            }
+        });
+
+        dialog.show();
     }
 
 }
