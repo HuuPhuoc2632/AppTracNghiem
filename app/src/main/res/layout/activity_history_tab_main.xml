@@ -5,25 +5,50 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:background="@color/white"
     android:orientation="vertical"
-    tools:context=".Activity.HistoryActivity">
+    >
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:text="Bài kiểm tra đã làm"
-        android:textColor="#FFD600"
-        android:textSize="25sp"
-        android:gravity="center"
-        android:fontFamily="@font/sigmar"
-        />
+    <RelativeLayout
+        android:layout_width="600dp"
+        android:layout_height="120dp"
+        android:layout_gravity="center">
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="600dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="-220dp"
+            android:background="@drawable/bg_title"
+            android:gravity="center"
+            android:paddingTop="90dp" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="161dp"
+            android:layout_marginTop="35dp"
+            android:layout_marginEnd="161dp"
+            android:layout_marginBottom="30dp"
+            android:background="@drawable/bg_title_text"
+            android:fontFamily="@font/sigmar"
+            android:gravity="center"
+            android:text="Lịch sử kiểm tra"
+            android:textColor="#FFD600"
+            android:textSize="30sp" />
+    </RelativeLayout>
 
     <ListView
         android:id="@+id/lvHistoryExam"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="10dp"
+        android:layout_marginTop="-25dp"
+        android:layout_weight="10"
+        android:background="@color/white"
         android:divider="@null"
         android:dividerHeight="15dp"
-        />
+        android:paddingBottom="50dp" />
 </LinearLayout>

@@ -1,5 +1,6 @@
 package com.hhp.huuphuoc372.ontapcacmondaicuong.Activity;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -7,15 +8,19 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Typeface;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ListView;
@@ -23,11 +28,14 @@ import android.widget.RelativeLayout;
 import android.widget.TabHost;
 import android.widget.TabWidget;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.hhp.huuphuoc372.ontapcacmondaicuong.R;
 import com.hhp.huuphuoc372.ontapcacmondaicuong.adapter.ResultGridviewApdater;
 import com.hhp.huuphuoc372.ontapcacmondaicuong.adapter.itemListViewAdapter;
 import com.hhp.huuphuoc372.ontapcacmondaicuong.dao.DBHelper;
+import com.hhp.huuphuoc372.ontapcacmondaicuong.dao.ExamDAO;
+import com.hhp.huuphuoc372.ontapcacmondaicuong.dao.QuestionAnsweredDAO;
 import com.hhp.huuphuoc372.ontapcacmondaicuong.model.Exam;
 import com.hhp.huuphuoc372.ontapcacmondaicuong.model.QuestionAnswered;
 import com.hhp.huuphuoc372.ontapcacmondaicuong.model.Subject;
@@ -58,6 +66,8 @@ public class MainActivity extends AppCompatActivity implements  SubjectAdapter.S
     private GridView gvListQuestionResult;
     private Button btnCloseResult;
     private Button btnReview;
+    private DBHelper dbHelper;
+    private itemListViewAdapter itemListViewAdapter;
 
 
     @Override
@@ -72,28 +82,39 @@ public class MainActivity extends AppCompatActivity implements  SubjectAdapter.S
         layoutExam = (RelativeLayout) view.findViewById(R.id.exam);
         GridLayoutManager manager = new GridLayoutManager(this, 1);
         recyclerView.setLayoutManager(manager);
-
+        dbHelper = new DBHelper(getApplicationContext());
+        try {
+            dbHelper.createDataBase();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         recyclerView.setAdapter(subjectAdapter);
         subjectAdapter.setSubjectItemListener(this);
         lvHistory = findViewById(R.id.lvHistoryExam);
 
-        Exam ex = new Exam(1, "Chủ nghĩa Xã hội Khoa học", qaList, "30/04/2023");
-        examList.add(ex);
-        examList.add(ex);
-        examList.add(ex);
-        examList.add(ex);
-        examList.add(ex);
-        examList.add(ex);
-        examList.add(ex);
-        examList.add(ex);
-        examList.add(ex);
-        examList.add(ex);
-
-
-
-        itemListViewAdapter itemListViewAdapter = new itemListViewAdapter(examList, this);
+        ExamDAO examDAO = new ExamDAO(dbHelper);
+        examList = examDAO.getExam();
+        itemListViewAdapter = new itemListViewAdapter(examList, this);
         lvHistory.setAdapter(itemListViewAdapter);
-        System.out.println(lvHistory.getId());
+        lvHistory.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                showConfirmDeleteDialog(position);
+                return true;
+
+            }
+        });
+        lvHistory.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Exam ex = examList.get(position);
+                Intent intent = new Intent(MainActivity.this, ReviewExamActivity.class);
+                intent.putExtra("list", (Serializable) ex.getQaList());
+                intent.putExtra("name", ex.getIdSubject());
+                intent.putExtra("category", -1);
+                startActivity(intent);
+            }
+        });
         DBHelper dbHelper = new DBHelper(getApplicationContext());
         try {
             dbHelper.createDataBase();
@@ -104,6 +125,30 @@ public class MainActivity extends AppCompatActivity implements  SubjectAdapter.S
         layoutPractice.setOnClickListener(this);
         layoutExam.setOnClickListener(this);
 
+    }
+
+    private void showConfirmDeleteDialog(int position) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+        builder.setMessage("Xác nhận xóa bài kiểm tra này!");
+        builder.setPositiveButton("Đồng ý", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Exam ex = examList.get(position);
+                ExamDAO examDAO = new ExamDAO(dbHelper);
+                QuestionAnsweredDAO questionAnsweredDAO = new QuestionAnsweredDAO(dbHelper);
+                boolean b = examDAO.deleteExam(ex.getIdExam());
+                boolean c = questionAnsweredDAO.deleteQA(ex.getIdExam());
+                examList.remove(position);
+                itemListViewAdapter.notifyDataSetChanged();
+            }
+        });
+        builder.setNegativeButton("Hủy bỏ", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                // Không làm gì cả
+            }
+        });
+        builder.show();
     }
 
 
@@ -146,6 +191,7 @@ public class MainActivity extends AppCompatActivity implements  SubjectAdapter.S
         if (view.getId() == R.id.exam) {
             startActivity(intentEx);
             dialog.hide();
+            finish();
         }
 
     }
@@ -160,8 +206,6 @@ public class MainActivity extends AppCompatActivity implements  SubjectAdapter.S
         subList.add(new Subject(R.drawable.pldc, "Pháp luật đại cương", "Pháp luật là đạo đức biểu hiện ra bên ngoài, đạo đức là pháp luật ẩn giấu bên trong."));
         return subList;
     }
-
-
 
     @Override
     public void onItemClick(View view, int position) {
@@ -216,7 +260,6 @@ public class MainActivity extends AppCompatActivity implements  SubjectAdapter.S
 
             }
         });
-
         dialog.show();
     }
 

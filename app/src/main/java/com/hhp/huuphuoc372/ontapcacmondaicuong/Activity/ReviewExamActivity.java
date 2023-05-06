@@ -30,7 +30,7 @@ import java.util.Objects;
 public class ReviewExamActivity extends AppCompatActivity implements View.OnClickListener {
 
     private TextView tvnameSubject, tvquestionContent, tvnumberQuestion, tvListQuestion;
-    private Button btnNext, btnPre;
+    private Button btnNext, btnPre, btnClose;
     private RadioGroup groupAnswer;
     private RadioButton rdbtnAnswer1, rdbtnAnswer2, rdbtnAnswer3, rdbtnAnswer4;
     private List<QuestionAnswered> qaList;
@@ -39,7 +39,7 @@ public class ReviewExamActivity extends AppCompatActivity implements View.OnClic
     private int numQ, category;
     private String subject = null;
     private GridView gvListQuestion;
-    private Button btnClose;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,8 +62,16 @@ public class ReviewExamActivity extends AppCompatActivity implements View.OnClic
         getFuncShowQuestion();
         btnNext.setOnClickListener(this);
         btnPre.setOnClickListener(this);
+        btnClose.setOnClickListener(this);
         tvListQuestion.setOnClickListener(this);
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(ReviewExamActivity.this, MainActivity.class);
+        startActivity(intent);
+        finish();
     }
 
     private void getFuncShowQuestion() {
@@ -89,6 +97,7 @@ public class ReviewExamActivity extends AppCompatActivity implements View.OnClic
         tvListQuestion = (TextView) findViewById(R.id.tvListQuestionResult);
         btnNext = (Button) findViewById(R.id.btnNextResult);
         btnPre = (Button) findViewById(R.id.btnPreResult);
+        btnClose = (Button) findViewById(R.id.btnCloseResult);
         groupAnswer = (RadioGroup) findViewById(R.id.groupAnswerResult);
         rdbtnAnswer1 = (RadioButton) findViewById(R.id.rdbtnAnswer1Result);
         rdbtnAnswer2 = (RadioButton) findViewById(R.id.rdbtnAnswer2Result);
@@ -298,6 +307,9 @@ public class ReviewExamActivity extends AppCompatActivity implements View.OnClic
 //                    showConfirmDialog();
 //                    break;
 //                }
+            case R.id.btnCloseResult:
+                onBackPressed();
+                break;
         }
     }
 

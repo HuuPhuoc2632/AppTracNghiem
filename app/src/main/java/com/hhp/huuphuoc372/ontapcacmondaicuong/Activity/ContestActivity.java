@@ -43,6 +43,9 @@ public class ContestActivity extends AppCompatActivity implements View.OnClickLi
         if(subject.equalsIgnoreCase("Chủ nghĩa Xã hội Khoa học")){
             subject = "CNXHKH";
         }
+        else if(subject.equalsIgnoreCase("Lịch sử Đảng Cộng Sản Việt Nam")){
+            subject = "LSDCSVN";
+        }
         questionList = getQuestion(subject);
         Collections.shuffle(questionList);
         

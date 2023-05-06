@@ -1,5 +1,6 @@
 package com.hhp.huuphuoc372.ontapcacmondaicuong.Activity;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
@@ -9,6 +10,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
@@ -24,12 +26,19 @@ import com.hhp.huuphuoc372.ontapcacmondaicuong.R;
 import com.hhp.huuphuoc372.ontapcacmondaicuong.adapter.ItemGridViewAdapter;
 import com.hhp.huuphuoc372.ontapcacmondaicuong.adapter.ResultGridviewApdater;
 import com.hhp.huuphuoc372.ontapcacmondaicuong.dao.DBHelper;
+import com.hhp.huuphuoc372.ontapcacmondaicuong.dao.ExamDAO;
+import com.hhp.huuphuoc372.ontapcacmondaicuong.dao.QuestionAnsweredDAO;
 import com.hhp.huuphuoc372.ontapcacmondaicuong.dao.QuestionDAO;
+import com.hhp.huuphuoc372.ontapcacmondaicuong.model.Exam;
 import com.hhp.huuphuoc372.ontapcacmondaicuong.model.Question;
 import com.hhp.huuphuoc372.ontapcacmondaicuong.model.QuestionAnswered;
 
 import java.io.Serializable;
 import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -49,6 +58,7 @@ public class ExamActivity extends AppCompatActivity implements View.OnClickListe
     private int numQ;
     private String subject;
     private CountDownTimer cdt;
+    private DBHelper dbHelper;
 
 
     @Override
@@ -59,15 +69,11 @@ public class ExamActivity extends AppCompatActivity implements View.OnClickListe
         getCountDown();
         Intent intent = getIntent();
         subject = intent.getStringExtra("name");
-
         listQuestionFull = getQuestion(getIdSubject(subject));
         questionList = listQuestionFull.subList(0, 40);
-
+        dbHelper = new DBHelper(getApplicationContext());
         Collections.shuffle(questionList);
         int i = 0;
-        for (Question q : questionList) {
-            System.err.println(q);
-        }
         for (Question q : questionList) {
             QuestionAnswered qa = new QuestionAnswered(i, q.getId(), 0);
             i++;
@@ -89,6 +95,8 @@ public class ExamActivity extends AppCompatActivity implements View.OnClickListe
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 cdt.cancel();
+                Intent intent1 = new Intent(ExamActivity.this, MainActivity.class);
+                startActivity(intent1);
                 finish();
             }
         });
@@ -99,11 +107,13 @@ public class ExamActivity extends AppCompatActivity implements View.OnClickListe
             }
         });
         builder.show();
-
     }
     public String getIdSubject(String subject){
         if (subject.equalsIgnoreCase("Chủ nghĩa Xã hội Khoa học")) {
             return "CNXHKH";
+        }
+        else if(subject.equalsIgnoreCase("Lịch sử Đảng Cộng Sản Việt Nam")){
+            return  "LSDCSVN";
         }
         return null;
     }
@@ -136,14 +146,9 @@ public class ExamActivity extends AppCompatActivity implements View.OnClickListe
             rdbtnAnswer4.setText(questionList.get(num).getD());
             setCheckedForRadiobutton(num);
         }
-        for (QuestionAnswered qa :
-                qaList) {
-            System.out.println(qa);
-        }
     }
 
     private void showQuestionByNumber(int number) {
-        System.out.println(number);
         tvListQuestion.setText("Câu " + number);
         tvnumberQuestion.setText("Câu hỏi số " + number + ":");
         tvquestionContent.setText(questionList.get(number - 1).getQuestion());
@@ -153,10 +158,6 @@ public class ExamActivity extends AppCompatActivity implements View.OnClickListe
         rdbtnAnswer4.setText(questionList.get(number - 1).getD());
         num = number - 1;
         setCheckedForRadiobutton(num);
-        for (QuestionAnswered qa :
-                qaList) {
-            System.out.println(qa);
-        }
     }
 
     public void setCheckedForRadiobutton(int num) {
@@ -227,7 +228,8 @@ public class ExamActivity extends AppCompatActivity implements View.OnClickListe
     private void showDialogFullTime() {
         AlertDialog.Builder builder = new AlertDialog.Builder(ExamActivity.this);
         builder.setMessage("Thời gian đã hết. Bài làm sẽ được tự động nộp!!");
-        builder.setPositiveButton("Đồng ý", new DialogInterface.OnClickListener() {
+        builder.setPositiveButton("Đã hiểu!", new DialogInterface.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 showDialogResult();
@@ -277,6 +279,7 @@ public class ExamActivity extends AppCompatActivity implements View.OnClickListe
     }
 
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @SuppressLint("NonConstantResourceId")
     public void onClick(View v) {
         switch (v.getId()) {
@@ -339,6 +342,7 @@ public class ExamActivity extends AppCompatActivity implements View.OnClickListe
             builder.setMessage("Bạn có chắc muốn nộp bài?");
         }
         builder.setPositiveButton("Đồng ý", new DialogInterface.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 showDialogResult();
@@ -364,8 +368,14 @@ public class ExamActivity extends AppCompatActivity implements View.OnClickListe
         return true;
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     private void showDialogResult() {
+        LocalDateTime localDate = java.time.LocalDateTime.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy - HH:mm");
+        String dateNow = formatter.format(localDate);
         updateQuestionWithAnswer();
+        Exam ex = new Exam(0, subject,qaList, dateNow);
+        insertExamToDatabase(ex);
         Dialog dialog = new Dialog(this);
         dialog.setContentView(R.layout.dialog_result);
         tvSumCorrect = dialog.findViewById(R.id.tvSumCorrect);
@@ -383,6 +393,9 @@ public class ExamActivity extends AppCompatActivity implements View.OnClickListe
             @Override
             public void onClick(View v) {
                 dialog.dismiss();
+                Intent intent1 = new Intent(ExamActivity.this, MainActivity.class);
+                startActivity(intent1);
+                finish();
             }
         });
         btnReview.setOnClickListener(new View.OnClickListener() {
@@ -395,11 +408,27 @@ public class ExamActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(intent);
                 dialog.dismiss();
                 finish();
-
             }
         });
-
+        dialog.setCanceledOnTouchOutside(false);
         dialog.show();
+
+    }
+
+    private void insertExamToDatabase(Exam ex) {
+        ExamDAO examDAO = new ExamDAO(dbHelper);
+        QuestionAnsweredDAO questionAnsweredDAO = new QuestionAnsweredDAO(dbHelper);
+        if(examDAO.insertExam(ex)){
+            Exam exam = examDAO.getExamNew();
+            for (QuestionAnswered qa:
+                    ex.getQaList()) {
+                if (!questionAnsweredDAO.insertQA(qa, exam.getIdExam())){
+                    Toast.makeText(this, "Lỗi khi lưu bài kiểm tra!!", Toast.LENGTH_SHORT).show();
+                }
+            }
+            Toast.makeText(this, "Bạn có thể xem lại bài kiểm tra của mình trong phần lịch sử", Toast.LENGTH_SHORT).show();
+        }
+
     }
 
     private int checkSumAnswerCorrect() {
