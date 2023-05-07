@@ -202,7 +202,7 @@ public class ExamActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void getCountDown() {
-      cdt = new CountDownTimer(1 * 60 * 1000, 1000) {
+      cdt = new CountDownTimer(30 * 60 * 1000, 1000) {
             @SuppressLint("SetTextI18n")
             public void onTick(long millisUntilFinished) {
                 int minutes = (int) (millisUntilFinished / 1000) / 60;

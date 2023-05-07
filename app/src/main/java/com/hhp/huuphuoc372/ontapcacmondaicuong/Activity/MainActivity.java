@@ -200,10 +200,10 @@ public class MainActivity extends AppCompatActivity implements  SubjectAdapter.S
         List<Subject> subList = new ArrayList<>();
         subList.add(new Subject(R.drawable.cnxhkh, "Chủ nghĩa Xã hội Khoa học", "Dân chủ là con đường hướng tới Chủ nghĩa Xã hội."));
         subList.add(new Subject(R.drawable.lsd, "Lịch sử Đảng Cộng Sản Việt Nam", "Đảng Cộng Sản Việt Nam quang vinh muôn năm."));
-        subList.add(new Subject(R.drawable.thm_ln, "Triết học Mác Lê-nin", "Vật chất có trước, ý thức có sau, vật chất là nguồn gốc của ý thức, quyết định ý thức."));
-        subList.add(new Subject(R.drawable.ktct, "Kinh tế Chính trị Mác Lê-nin", " Học thuyết giá trị thặng dư là biểu hiện mẫu mực nghiên cứu và vận dụng quan điểm duy vật lịch sử."));
-        subList.add(new Subject(R.drawable.tthcm, "Tư tưởng Hồ Chí Minh","Học tập và làm theo tấm gương đạo đức Hồ Chí Minh"));
-        subList.add(new Subject(R.drawable.pldc, "Pháp luật đại cương", "Pháp luật là đạo đức biểu hiện ra bên ngoài, đạo đức là pháp luật ẩn giấu bên trong."));
+//        subList.add(new Subject(R.drawable.thm_ln, "Triết học Mác Lê-nin", "Vật chất có trước, ý thức có sau, vật chất là nguồn gốc của ý thức, quyết định ý thức."));
+//        subList.add(new Subject(R.drawable.ktct, "Kinh tế Chính trị Mác Lê-nin", " Học thuyết giá trị thặng dư là biểu hiện mẫu mực nghiên cứu và vận dụng quan điểm duy vật lịch sử."));
+//        subList.add(new Subject(R.drawable.tthcm, "Tư tưởng Hồ Chí Minh","Học tập và làm theo tấm gương đạo đức Hồ Chí Minh"));
+//        subList.add(new Subject(R.drawable.pldc, "Pháp luật đại cương", "Pháp luật là đạo đức biểu hiện ra bên ngoài, đạo đức là pháp luật ẩn giấu bên trong."));
         return subList;
     }
 
